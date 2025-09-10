@@ -5,10 +5,9 @@ import { useRef, useCallback } from 'react';
 interface TouchDragHandlerProps {
   onReorder: (fromIndex: number, toIndex: number) => void;
   children: React.ReactNode;
-  itemCount: number;
 }
 
-export default function TouchDragHandler({ onReorder, children, itemCount }: TouchDragHandlerProps) {
+export default function TouchDragHandler({ onReorder, children }: TouchDragHandlerProps) {
   const draggedElement = useRef<HTMLElement | null>(null);
   const draggedIndex = useRef<number>(-1);
   const touchStartY = useRef<number>(0);

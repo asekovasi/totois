@@ -26,7 +26,7 @@ export const loadTasks = (): Task[] => {
     const tasks = JSON.parse(tasksJson);
     
     // Convert date strings back to Date objects
-    return tasks.map((task: any) => ({
+    return tasks.map((task: Task) => ({
       ...task,
       createdAt: new Date(task.createdAt),
       completedAt: task.completedAt ? new Date(task.completedAt) : undefined,

@@ -134,7 +134,6 @@ export default function TaskList({
     // Active tasks with drag and drop
     <TouchDragHandler
       onReorder={handleTouchReorder}
-      itemCount={sortedTasks.length}
     >
       <div className="space-y-3">
         {sortedTasks.map((task, index) => (
