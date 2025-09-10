@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-8 pb-24 md:pb-8 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
@@ -109,8 +109,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex mb-6 bg-white rounded-xl p-1 shadow-sm border border-gray-100">
+        {/* Tab Navigation - Desktop */}
+        <div className="hidden md:flex mb-6 bg-white rounded-xl p-1 shadow-sm border border-gray-100">
           <button
             onClick={() => setActiveTab('active')}
             className={`flex-1 py-3 px-4 rounded-lg transition-all font-medium ${
@@ -142,6 +142,32 @@ export default function Home() {
             onReorder={reorderTasks}
             showCompleted={activeTab === 'completed'}
           />
+        </div>
+        
+        {/* Tab Navigation - Mobile (at the bottom) */}
+        <div className="md:hidden mt-6 bg-white rounded-xl p-1 shadow-sm border border-gray-100 fixed bottom-4 left-4 right-4 z-10">
+          <div className="flex w-full">
+            <button
+              onClick={() => setActiveTab('active')}
+              className={`flex-1 py-3 px-4 rounded-lg transition-all font-medium ${
+                activeTab === 'active'
+                  ? 'bg-purple-500 text-white shadow-md'
+                  : 'text-gray-600 hover:text-purple-600'
+              }`}
+            >
+              Активные ({activeTasks.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('completed')}
+              className={`flex-1 py-3 px-4 rounded-lg transition-all font-medium ${
+                activeTab === 'completed'
+                  ? 'bg-purple-500 text-white shadow-md'
+                  : 'text-gray-600 hover:text-purple-600'
+              }`}
+            >
+              Завершенные ({completedTasks.length})
+            </button>
+          </div>
         </div>
 
         {/* Task Modal */}
